@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-with, initial-scale=1.0">
+    <title>HTML Elements and Attributes Overview /</title>
+    <link rel="stylesheet" href="exp2.css">
+ 
+</head>
+<body>
+
+<h1><u>HTML Elements and Attributes Overview Practical 1</u></h1>
+<h2>PAREENITA SHIRSATH </h2>
+
+<h2>Elements</h2>
+<p>HTML elements are the building blocks of HTML pages. They consist of tags, attributes, and content.</p>
+
+<h2>Attributes</h2>
+<p>HTML attributes provide additional information about elements. They are always included in the opening tag.</p>
+
+<h2>Head</h2>
+<p>The  element contains meta-information about the HTML document, such as its title, linked CSS, and metadata.</p>
+
+<h2>Body</h2>
+<p>The element contains the content of an HTML document, such as text, images, links, and other media.</p>
+
+<h2>Hyperlink</h2>
+<p>The  (anchor) tag defines a hyperlink, which is used to link from one page to another. The href attribute specifies the link's destination.</p>
+<a href="https://www.w3schools.com/html/" target="_blank">Visit W3Schools HTML Tutorial</a>
+
+<h2>Formatting Text</h2>
+<p>HTML provides various tags to format text, such as  for bold,  for italics, and  for underline.</p>
+<p><b>This text is bold.</b></p>
+<p><i>This text is italicized.</i></p>
+<p><u>This text is underlined.</u></p>
+
+<h2>Images</h2>
+<p>The img tag is used to embed images in HTML pages. The src attribute specifies the path to the image.</p>
+<img src="html.jpg" alt="HTML" width="100" height="100">
+
+<h2>Tables</h2>
+<p>The table tag defines an HTML table. A table is divided into rows  and columns .</p>
+<table border="1">
+    <tr>
+        <th>Header 1</th>
+        <th>Header 2</th>
+    </tr>
+    <tr>
+        <td>Data 1</td>
+        <td>Data 2</td>
+    </tr>
+</table>
+
+<h2>Lists</h2>
+<p>HTML supports ordered lists , unordered lists , and description lists .</p>
+<ul>
+    <li>Unordered List Item 1</li>
+    <li>Unordered List Item 2</li>
+</ul>
+<ol>
+    <li>Ordered List Item 1</li>
+    <li>Ordered List Item 2</li>
+</ol>
+
+<h2>Frames</h2>
+<p>The iframe tag specifies an inline frame. An inline frame is used to embed another document within the current HTML document.</p>
+<iframe src="https://www.w3schools.com" width="300" height="200"></iframe>
+
+<h2>Forms</h2>
+<p>HTML forms are used to collect user input. The form element wraps input elements like text fields, radio buttons, and submit buttons.</p>
+<form action="https://www.example.com/submit_form" method="post">
+    <label for="name">Name (max 40 characters):</label><br>
+    <input type="text" id="name" name="name" maxlength="40" required><br><br>
+    <label for="email">Email:</label><br>
+    <input type="email" id="email" name="email" required><br><br>
+    <label for="phone">Phone Number (10 digits):</label><br>
+    <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required><br><br>
+    <input type="submit" value="Submit">
+</form>
+
+<h2>Multimedia</h2>
+<p>HTML supports multimedia elements like audio and video through the audio and video tags.</p>
+<video width="320" height="240" controls>
+    <source src="video.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+
+<h2>Links</h2>
+<p>The link tag defines the relationship between a document and an external resource, most commonly used to link to stylesheets.</p>
+<a href="https://www.w3schools.com/html/" target="_blank"><button>Go to W3Schools</button></a>
+<button onclick="document.querySelector('form').scrollIntoView();">Show Form</button>
+
+</body>
+</html>

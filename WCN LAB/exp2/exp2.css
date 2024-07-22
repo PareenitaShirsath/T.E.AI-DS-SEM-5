@@ -1,0 +1,17 @@
+body {
+   background-color: darksalmon;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: medium;
+    border: 2px solid black;
+}
+h1{
+    color: black;
+    font-family: 'Times New Roman', Times, serif;
+}
+p {
+    color: black;
+  
+    font-family: 'Times New Roman', Times, serif;
+    font-size: medium;
+
+}

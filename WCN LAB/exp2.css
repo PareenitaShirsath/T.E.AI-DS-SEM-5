@@ -1,0 +1,11 @@
+
+*{
+    font-family: 'Times New Roman', Times, serif;
+    background-color: #f45c25;
+    font-size: medium;
+
+}
+p{
+    border: 2 px solid black;
+    padding: 30 px;
+}
