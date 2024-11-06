@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Count Numbers</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        .container {
+            text-align: center;
+            width: 300px;
+        }
+        input, button {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+            width: 100%;
+        }
+        .results {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Count Numbers</h1>
+        <form id="numberForm">
+            <input type="number" id="numberInput" placeholder="Enter a number" required>
+            <button type="button" onclick="addNumber()">Add Number</button>
+            <button type="submit">Calculate Counts</button>
+        </form>
+        <p id="message" class="error"></p>
+        <div id="results" class="results"></div>
+    </div>
+
+    <script>
+        const numbers = [];
+
+        document.getElementById('numberForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form from submitting
+            calculateCounts();
+        });
+
+        function addNumber() {
+            const numberInput = document.getElementById('numberInput');
+            const number = parseFloat(numberInput.value.trim());
+            
+            if (isNaN(number)) {
+                displayMessage('Invalid input. Please enter a valid number.');
+                return;
+            }
+
+            if (numbers.length < 10) {
+                numbers.push(number);
+                numberInput.value = ''; // Clear input field
+                displayMessage('Number added. Enter more numbers if needed.');
+            } else {
+                displayMessage('You have already entered 10 numbers.');
+            }
+        }
+
+        function calculateCounts() {
+            if (numbers.length < 10) {
+                displayMessage('Please enter exactly 10 numbers.');
+                return;
+            }
+
+            let positiveCount = 0;
+            let negativeCount = 0;
+            let zeroCount = 0;
+
+            numbers.forEach(number => {
+                if (number > 0) {
+                    positiveCount++;
+                } else if (number < 0) {
+                    negativeCount++;
+                } else {
+                    zeroCount++;
+                }
+            });
+
+            // Display results
+            const resultsElement = document.getElementById('results');
+            resultsElement.innerHTML = `
+                Positive numbers: ${positiveCount}<br>
+                Negative numbers: ${negativeCount}<br>
+                Zeros: ${zeroCount}
+            `;
+        }
+
+        function displayMessage(message, color = 'red') {
+            const messageElement = document.getElementById('message');
+            messageElement.textContent = message;
+            messageElement.style.color = color;
+        }
+    </script>
+</body>
+</html>

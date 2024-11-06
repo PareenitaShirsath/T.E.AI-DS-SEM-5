@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set Cookie Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .container {
+            text-align: center;
+        }
+        input, button {
+            padding: 10px;
+            margin: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Set a Cookie</h1>
+        <form id="cookieForm">
+            <input type="text" id="cookieName" placeholder="Cookie Name" required>
+            <input type="text" id="cookieValue" placeholder="Cookie Value" required>
+            <input type="number" id="cookieDays" placeholder="Expiration (Days)" required>
+            <button type="submit">Set Cookie</button>
+        </form>
+        <p id="message"></p>
+    </div>
+
+    <script>
+        document.getElementById('cookieForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form from submitting
+
+            // Get input values
+            const name = document.getElementById('cookieName').value.trim();
+            const value = document.getElementById('cookieValue').value.trim();
+            const days = parseInt(document.getElementById('cookieDays').value.trim());
+
+            if (name && value && !isNaN(days)) {
+                setCookie(name, value, days);
+                displayMessage('Cookie has been set successfully!');
+            } else {
+                displayMessage('Please fill all the fields with valid values.');
+            }
+        });
+
+        // Function to set a cookie
+        function setCookie(name, value, days) {
+            const date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000)); // Set expiration in milliseconds
+            const expires = "expires=" + date.toUTCString();
+            document.cookie = `${name}=${value}; ${expires}; path=/`; // Set cookie
+        }
+
+        // Function to display messages
+        function displayMessage(message) {
+            document.getElementById('message').textContent = message;
+        }
+    </script>
+</body>
+</html>

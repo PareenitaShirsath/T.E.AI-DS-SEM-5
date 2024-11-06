@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        .container {
+            text-align: center;
+            width: 300px;
+        }
+        input {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+            width: 100%;
+        }
+        button {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Form Validation</h1>
+        <form id="validationForm">
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <input type="email" id="email" placeholder="Email ID" required>
+            <button type="submit">Submit</button>
+        </form>
+        <p id="message" class="error"></p>
+    </div>
+
+    <script>
+        document.getElementById('validationForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form from submitting
+
+            // Get input values
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value.trim();
+            const email = document.getElementById('email').value.trim();
+
+            // Check if username and password are not blank
+            if (username === '') {
+                displayMessage('Username cannot be blank.');
+                return;
+            }
+            if (password === '') {
+                displayMessage('Password cannot be blank.');
+                return;
+            }
+
+            // Validate username (alphanumeric, 3-15 characters)
+            const usernameRegex = /^[a-zA-Z0-9]{3,15}$/;
+            if (!usernameRegex.test(username)) {
+                displayMessage('Username must be alphanumeric and 3-15 characters long.');
+                return;
+            }
+
+            // Validate password (minimum 8 characters, at least one letter and one number)
+            const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+            if (!passwordRegex.test(password)) {
+                displayMessage('Password must be at least 8 characters long, including at least one letter and one number.');
+                return;
+            }
+
+            // Validate email (basic email format)
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                displayMessage('Invalid email format.');
+                return;
+            }
+
+            // If all validations pass
+            displayMessage('Validation successful!', 'green');
+        });
+
+        function displayMessage(message, color = 'red') {
+            const messageElement = document.getElementById('message');
+            messageElement.textContent = message;
+            messageElement.style.color = color;
+        }
+    </script>
+</body>
+</html>
